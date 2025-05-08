@@ -26,4 +26,10 @@ public class UsuarioController {
     public ResponseEntity<List<Usuario>> listar() {
         return ResponseEntity.ok(service.listar());
     }
+    @PutMapping("/{id}")
+    public ResponseEntity<Usuario> atualizar(@PathVariable Long id, @Valid @RequestBody UsuarioDTO dto) {
+        Usuario atualizado = service.atualizar(id, dto);
+        return ResponseEntity.ok(atualizado);
+    }
+
 }
