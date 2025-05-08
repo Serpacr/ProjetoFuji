@@ -40,4 +40,14 @@ public class TarefaService {
         tarefa.setConcluida(true);
         return tarefaRepository.save(tarefa);
     }
+
+    public Tarefa buscarPorId(Long id) {
+        return tarefaRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Tarefa não encontrada com id: " + id));
+    }
+
+    public void deletar(Long id) {
+        Tarefa tarefa = buscarPorId(id);
+        tarefaRepository.delete(tarefa);
+    }
 }
